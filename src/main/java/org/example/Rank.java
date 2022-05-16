@@ -1,8 +1,6 @@
 package org.example;
+ // Contains the card ranks, names, values
 
-/**
- * Contains the Ranks of Cards, Names, and Values
- */
 public enum Rank {
     ACE("Ace", 11),
     TWO("Two", 2),

@@ -1,23 +1,34 @@
 package org.example;
 import java.util.Scanner;
 
-/**
- * Handles all Player specific operations
- */
+ // Handles all Player specific operations
+
 public class Player extends Person {
 
+    private double wallet;
+    private double bet;
     Scanner input = new Scanner(System.in);
+
 
     //Create a new Player
     public Player() {
         super.setName("Player");
     }
 
-    /**
-     * Allow the player to decide to hit or stand
-     * @param deck - deck we are drawing from when we hit
-     * @param discard - deck we discard to, in case we need to shuffle and use when deck runs out
-     */
+    public void winBet(){
+        setWallet(getWallet() + getBet());
+    }
+    public void loseBet(){
+        setWallet(getWallet()-getBet());
+    }
+     // Allow the player to decide to hit or stand
+     // @param deck - deck we are drawing from when we hit
+     // @param discard - deck we discard to, in case we need to shuffle and use when deck runs out
+
+    //prints how much money the player has
+    public void printWallet(){
+        System.out.println("You have $"+ this.getWallet() +  " in your wallet.");
+    }
     public void makeDecision(Deck deck, Deck discard) {
 
         //decision holds their numerical choice
@@ -64,5 +75,24 @@ public class Player extends Person {
 
     }
 
+    public void takeBet(){
+        System.out.println("How much would you like to bet?");
+        setBet(input.nextDouble());
+    }
 
+    public double getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
+    }
+
+    public double getBet() {
+        return bet;
+    }
+
+    public void setBet(double bet) {
+        this.bet = bet;
+    }
 }

@@ -1,8 +1,6 @@
 package org.example;
 
-/**
- * Contains the suits of a Card, Names
- */
+ // Contains the suits of a Card, Names
 public enum Suit {
     CLUB("Clubs"),
     DIAMOND("Diamonds"),

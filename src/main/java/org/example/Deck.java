@@ -4,34 +4,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-/**
- * A deck of cards
- */
+ // A deck of cards
 public class Deck {
 
     //An arraylist to hold the deck of Cards
     private ArrayList<Card> deck;
 
-
-    /**
-     * Create an empty deck of cards
-     */
+     // Create an empty deck of cards
     public Deck(){
         deck = new ArrayList<Card>();
     }
 
-    /**
-     * Copy Constructor
-     * @param c deck being copied
-     */
+     // Copy Constructor
+     // @param c deck being copied
+
     public Deck(Deck c){
         Collections.copy(this.deck, c.getCards());
     }
+     // Create a standard deck of cards
+     // @param makeDeck makes a standard deck of cards if true
 
-    /**
-     * Create a standard deck of cards
-     * @param makeDeck makes a standard deck of cards if true
-     */
     public Deck(boolean makeDeck){
         deck = new ArrayList<Card>();
         if(makeDeck){
@@ -46,26 +38,20 @@ public class Deck {
         }
     }
 
-    /**
-     *
-     * @param card The card being added to this deck
-     */
+     // @param card The card being added to this deck
+
     public void addCard(Card card){
         deck.add(card);
     }
 
-    /**
-     *
-     * @param cards an arraylist of cards to be added to this deck
-     */
+     // @param cards an arraylist of cards to be added to this deck
+
     public void addCards(ArrayList<Card> cards){
         deck.addAll(cards);
     }
 
-    /**
-     *
-     * @return Every value of the deck as a String with line separators
-     */
+     // @return Every value of the deck as a String with line separators
+
     public String toString(){
         //A string to hold everything we're going to return
         String output = "";
@@ -76,18 +62,13 @@ public class Deck {
         }
         return output;
     }
+     //Shuffle the deck of Cards at random
 
-    /**
-     * Shuffle the deck of Cards at random
-     */
     public void shuffle(){
         Collections.shuffle(deck, new Random());
     }
+     // @return The card taken from the deck
 
-    /**
-     *
-     * @return The card taken from the deck
-     */
     public Card takeCard(){
 
         //Take a copy of the first card from the deck
@@ -99,10 +80,8 @@ public class Deck {
 
     }
 
-    /**
-     *
-     * @return true if the deck still has cards left
-     */
+     // @return true if the deck still has cards left
+
     public boolean hasCards(){
         if (deck.size()>0){
             return true;
@@ -111,36 +90,26 @@ public class Deck {
             return false;
         }
     }
+     // @return The number of cards left in the deck
 
-    /**
-     *
-     * @return The number of cards left in the deck
-     */
     public int cardsLeft(){
         return deck.size();
     }
+    // @return the arraylist containing all the cards in this deck
 
-    /**
-     *
-     * @return the arraylist containing all the cards in this deck
-     */
     public ArrayList<Card> getCards() {
         return deck;
     }
+     // Empties out this Deck
 
-    /**
-     * Empties out this Deck
-     */
     public void emptyDeck(){
         deck.clear();
     }
 
+     //Take all the cards from a discarded deck and place them in this deck, shuffled.
+     //Clear the old deck
+     // @param discard - the deck we're getting the cards from
 
-    /**
-     * Take all the cards from a discarded deck and place them in this deck, shuffled.
-     * Clear the old deck
-     * @param discard - the deck we're getting the cards from
-     */
     public void reloadDeckFromDiscard(Deck discard){
         this.addCards(discard.getCards());
         this.shuffle();

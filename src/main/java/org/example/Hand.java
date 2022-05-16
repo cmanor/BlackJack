@@ -4,9 +4,8 @@ import com.sun.source.tree.PackageTree;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * A hand of cards to play with
- */
+ // A hand of cards to play with
+
 public class Hand {
 
     private ArrayList<Card> hand;
@@ -15,22 +14,18 @@ public class Hand {
         hand = new ArrayList<Card>();
     }
 
-    /**
-     * Take a single card from the top of this deck and add it to the hand, removing it from the previous deck
-     * @param deck The deck of cards we're taking from
-     */
+     // Take a single card from the top of this deck and add it to the hand, removing it from the previous deck
+     // @param deck The deck of cards we're taking from
+
     public void takeCardFromDeck(Deck deck){
         hand.add(deck.takeCard());
     }
 
-    /**
-     * Add a single card to this hand
-     * @param c The card being added
-     */
-    /**
-     *
-     * @param discardDeck The deck we're discarding this hand to
-     */
+     // Add a single card to this hand
+     // @param c The card being added
+
+     // @param discardDeck The deck we're discarding this hand to
+
     public void discardHandToDeck(Deck discardDeck){
 
         //copy cards from hand to discardDeck
@@ -40,11 +35,8 @@ public class Hand {
         hand.clear();
 
     }
+     // @return The hand with all its cards in a single line String
 
-    /**
-     *
-     * @return The hand with all its cards in a single line String
-     */
     public String toString(){
         //the String we're formatting for output
         String output = "";
@@ -58,10 +50,8 @@ public class Hand {
     }
 
 
-    /**
-     *
-     * @return The calculated numerical value of the hand as an integer
-     */
+     // @return The calculated numerical value of the hand as an integer
+
     public int calculatedValue(){
 
         //variable to count number of aces, and current total value
@@ -88,17 +78,10 @@ public class Hand {
         return value;
 
     }
+     //@param idx the index of the card we're getting
+     //@return the card we got
 
-
-    /**
-     *
-     * @param idx the index of the card we're getting
-     * @return the card we got
-     */
     public Card getCard(int idx){
         return hand.get(idx);
     }
-
-
-
 }
