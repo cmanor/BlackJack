@@ -1,35 +1,32 @@
 package org.example;
 import java.util.Scanner;
 
- // Handles all Player specific operations
+ // logic n stuff specific to the player
 
 public class Player extends Person {
 
     private double wallet;
     private double bet;
-    Scanner input = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
 
     //Create a new Player
     public Player() {
         super.setName("Player");
     }
-
     public void winBet(){
         setWallet(getWallet() + getBet());
     }
     public void loseBet(){
         setWallet(getWallet()-getBet());
     }
-     // Allow the player to decide to hit or stand
-     // @param deck - deck we are drawing from when we hit
-     // @param discard - deck we discard to, in case we need to shuffle and use when deck runs out
 
     //prints how much money the player has
     public void printWallet(){
         System.out.println("You have $"+ this.getWallet() +  " in your wallet.");
     }
-    public void makeDecision(Deck deck, Deck discard) {
+
+    public void hitOrStand(Deck deck, Deck discard) {
 
         //decision holds their numerical choice
         int  decision = 0;
@@ -40,31 +37,28 @@ public class Player extends Person {
         while(getNum){
             //try to get that number
             try{
-                System.out.println("Would you like to: 1) Hit or 2) Stand");
-                decision = input.nextInt();
+                System.out.println("Press 1 to HIT or any other number to STAND.");
+                decision = scanner.nextInt();
                 getNum = false;
 
             }
             //catch any exceptions and try again
             catch(Exception e){
-                System.out.println("Invalid");
-                //we need to go to the next line of input or this will not work
-                input.next();
+                System.out.println("ERROR! ERROR!");
+                scanner.next();
             }
-            //we don't close the scanner, because we will need it later.
         }
 
         //if they decide to hit
         if (decision == 1) {
-            //hit the deck
             this.hit(deck, discard);
             //return if they have blackjack or busted
             if(this.getHand().calculatedValue()>20){
                 return;
             }
             else{
-                //allow them to decide to hit or stand again, using our same decks
-                this.makeDecision(deck, discard);
+                //let them choose again
+                this.hitOrStand(deck, discard);
             }
 
         } else {
@@ -76,8 +70,19 @@ public class Player extends Person {
     }
 
     public void takeBet(){
-        System.out.println("How much would you like to bet?");
-        setBet(input.nextDouble());
+        System.out.print("How much would you like to bet?"+ "\n" + "$");
+        double potentialBet = scanner.nextDouble();
+        while(true) {
+            if (potentialBet > 0 && potentialBet <= this.wallet) {
+                setBet(potentialBet);
+                return;
+            } else {
+                System.out.println("Haha. Place a REAL bet.");
+                printWallet();
+                System.out.print("How much would you like to bet?" + "\n" + "$");
+                potentialBet = scanner.nextDouble();
+            }
+        }
     }
 
     public double getWallet() {

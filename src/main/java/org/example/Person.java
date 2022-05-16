@@ -4,7 +4,7 @@ package org.example;
 
 public abstract class Person {
 
-    //hand holds the Persons active playing cards
+    //persons active cards
     private Hand hand;
     private String name;
 
@@ -13,7 +13,7 @@ public abstract class Person {
         this.hand = new Hand();
         this.name = "";
     }
-    //Setters and Getters
+
     public Hand getHand(){
         return this.hand;
     }
@@ -29,7 +29,7 @@ public abstract class Person {
         System.out.println(this.hand + " Valued at: " + this.hand.calculatedValue());
     }
 
-      //Player takes a card from the deck
+      //taking cards from the deck
     public void hit(Deck deck, Deck discard){
 
         //no cards left in deck

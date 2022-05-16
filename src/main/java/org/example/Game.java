@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.Scanner;
-
- // Game logic
+// Game logic
 
 public class Game {
 
@@ -111,7 +109,7 @@ public class Game {
 
         //Let the player decide what to do next
         //pass the decks in case they decide to hit
-        player.makeDecision(deck, discarded);
+        player.hitOrStand(deck, discarded);
 
         //Check if they busted
         if(player.getHand().calculatedValue() > 21){
